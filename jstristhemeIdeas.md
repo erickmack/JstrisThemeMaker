@@ -44,4 +44,4 @@
   
 ``**harder stuff over here**``
 - SFX
-- Line clear animationsd
+- Line clear animations
