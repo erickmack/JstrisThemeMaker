@@ -45,3 +45,4 @@
 ``**harder stuff over here**``
 - SFX
 - Line clear animations
+- Drag and drop components
