@@ -60,7 +60,7 @@ const Navbar = () => {
                 </li>
                 <li className="dropdown-submenu">
                   <a
-                    tabindex="-1"
+                    tabIndex="-1"
                     href="https://jstris.jezevec10.com/play/sprint"
                   >
                     Sprint
@@ -81,7 +81,7 @@ const Navbar = () => {
                   </ul>
                 </li>
                 <li className="dropdown-submenu">
-                  <a tabindex="-1" href="cheeseRace">
+                  <a tabIndex="-1" href="cheeseRace">
                     Cheese race
                   </a>
                   <ul className="dropdown-menu">
@@ -115,7 +115,7 @@ const Navbar = () => {
                   <a href="#">Practice</a>
                 </li>
                 <li className="dropdown-submenu">
-                  <a tabindex="-1" href="#">
+                  <a tabIndex="-1" href="#">
                     Rulesets
                   </a>
                   <ul className="dropdown-menu">

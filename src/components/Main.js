@@ -9,6 +9,8 @@ const Jstris = styled.div`
   background-color: black;
   overflow: scroll;
   overflow-x: hidden;
+  border-top: 4px solid white;
+  border-right: 4px solid white;
   scrollbar-width: thin;
   height: 90vh;
   &::-webkit-scrollbar {
