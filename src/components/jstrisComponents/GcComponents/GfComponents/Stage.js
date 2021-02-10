@@ -1,23 +1,30 @@
-import {useEffect} from 'react'
+import { useEffect } from "react";
+import styled from "styled-components";
 
-import DrawBlocks from '../../CanvasFunctions/DrawBlocks'
-import DrawBgGrid from '../../CanvasFunctions/DrawBgGrid'
-import DrawQandHold from '../../CanvasFunctions/DrawQandHold'
+import DrawBlocks from "../../CanvasFunctions/DrawBlocks";
+import DrawBgGrid from "../../CanvasFunctions/DrawBgGrid";
+import DrawQandHold from "../../CanvasFunctions/DrawQandHold";
 
-function Stage(){
+const AttackLine = styled.div`
+  width: 5px;
+  height: 120px;
+  background-color: red;
+  z-index: 44;
+  float: right;
+  position: inherit;
+  bottom: ;
+  top: 360px;
+`;
+
+function Stage() {
   useEffect(() => {
-    DrawBlocks()
-    DrawBgGrid(1,'#bgLayer')
-    DrawQandHold()
-  }, [])  
+    DrawBlocks();
+    DrawBgGrid(1, "#bgLayer");
+    DrawQandHold();
+  }, []);
   return (
     <div id="stage">
-      <canvas
-        id="bgLayer"
-        class="layer"
-        width="248"
-        height="480"
-      ></canvas>
+      <canvas id="bgLayer" class="layer" width="248" height="480"></canvas>
       <canvas
         id="myCanvas"
         class="layer mainLayer"
@@ -25,8 +32,9 @@ function Stage(){
         height="480"
         tabindex="1"
       ></canvas>
+      <AttackLine></AttackLine>
     </div>
   );
-};
+}
 
 export default Stage;

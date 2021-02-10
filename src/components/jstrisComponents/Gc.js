@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const Gc = () => {
     return (
-        <Container className='container' id='gc'>
+        <Container className="container" id='gc'>
             <GameFrame/>
         </Container>
     )

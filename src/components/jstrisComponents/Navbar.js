@@ -1,11 +1,20 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from "styled-components";
 
-let title = false
+let title = false;
 const NavBar = styled.nav`
-${()=>title && css`
-    background-color: turquoise;
-`}
-`
+  ${() =>
+    title &&
+    css`
+      background-color: turquoise;
+    `}
+
+  @media (max-width: 1220px) {
+    min-width: max-content;
+  }
+  @media(min-width: 1220px){
+    width: auto;
+  }
+`;
 
 const Navbar = () => {
   return (
@@ -29,7 +38,13 @@ const Navbar = () => {
         </div>
         <div className="collapse navbar-collapse" id="app-navbar-collapse">
           <ul className="nav navbar-nav" id="mnav">
-            <li id='playDD' onClick={()=>document.getElementById('playDD').classList.toggle('open')} className="dropdown">
+            <li
+              id="playDD"
+              onClick={() =>
+                document.getElementById("playDD").classList.toggle("open")
+              }
+              className="dropdown"
+            >
               <a
                 href="#"
                 className="dropdown-toggle"
