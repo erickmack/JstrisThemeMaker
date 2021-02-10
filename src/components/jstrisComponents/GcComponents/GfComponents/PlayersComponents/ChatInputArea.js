@@ -4,10 +4,9 @@ const ChatInputArea = () => {
       <div className="chatInputC">
         <input
           type="text"
-          autocomplete="off"
+          autoComplete="off"
           size="500"
           id="chatInput"
-          value=""
           style={{paddingRight: '37px'}}
         />
       </div>

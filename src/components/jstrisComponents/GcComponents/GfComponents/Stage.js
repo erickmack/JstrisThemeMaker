@@ -24,13 +24,13 @@ function Stage() {
   }, []);
   return (
     <div id="stage">
-      <canvas id="bgLayer" class="layer" width="248" height="480"></canvas>
+      <canvas id="bgLayer" className="layer" width="248" height="480"></canvas>
       <canvas
         id="myCanvas"
-        class="layer mainLayer"
+        className="layer mainLayer"
         width="248"
         height="480"
-        tabindex="1"
+        tabIndex="1"
       ></canvas>
       <AttackLine></AttackLine>
     </div>

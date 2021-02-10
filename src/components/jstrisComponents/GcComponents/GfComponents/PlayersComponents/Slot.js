@@ -20,7 +20,6 @@ const AttackLine = styled.div`
 const Slot = () => {
   useEffect(() => {
     DrawBgGrid(1, ".bgLayer");
-    console.log("here");
   }, []);
   return (
     <>
