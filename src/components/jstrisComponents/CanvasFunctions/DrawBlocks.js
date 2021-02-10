@@ -62,7 +62,6 @@ const DrawBlocks = () => {
     if (random <= 70) {
       let gHole = getHole();
       for (let i = 0; i < 10; i++) {
-        console.log(i,gHole)
         if (i === gHole) continue;
         DrawBlock(gamectx, i, 14, 1, false, tex);
         DrawBlock(gamectx, i, 15, 1, false, tex);
