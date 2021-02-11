@@ -286,10 +286,6 @@ input[type="radio"]:focus {
   position: relative;
 }
 
-.open {
-  background-color: #28415b;
-}
-
 .open > .dropdown-menu {
   display: block;
 }
@@ -323,14 +319,7 @@ input[type="radio"]:focus {
   clear: both;
   font-weight: 400;
   line-height: 1.428571429;
-  color: #fff;
   white-space: nowrap;
-}
-.dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
-  text-decoration: none;
-  color: #fff;
-  background-color: #428bca;
 }
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
@@ -530,31 +519,17 @@ input[type="radio"]:focus {
   border-top-left-radius: 0;
 }
 .navbar-default {
-  background-color: #375a7f;
   border-color: transparent;
-}
-.navbar-default .navbar-brand {
-  color: #fff;
 }
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:hover {
   color: #00a178;
   background-color: transparent;
 }
-.navbar-default .navbar-nav > li > a {
-  color: #fff;
-}
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
   color: #00a178;
   background-color: transparent;
-}
-.navbar-default .navbar-toggle {
-  border-color: #28415b;
-}
-.navbar-default .navbar-toggle:focus,
-.navbar-default .navbar-toggle:hover {
-  background-color: #28415b;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fff;
@@ -811,19 +786,6 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 #settingsBox .help-tip p {
   background-color: #4c4c4c;
-}
-.notification-count {
-  height: 15px;
-  font-size: 12px;
-  border-radius: 30%;
-  background-color: #ff4927;
-  color: #fff;
-  text-align: center;
-  display: inline-block;
-  padding: 1px 6px 15px 5px;
-  line-height: 12px;
-  vertical-align: 5px;
-  margin-left: 2px;
 }
 .dropdown-menu li .notification-count {
   vertical-align: 2px;

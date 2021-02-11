@@ -1,263 +1,324 @@
-import styled, { css } from "styled-components";
+import { useSelector } from "react-redux";
 
-let title = false;
+import styled from "styled-components";
+
 const NavBar = styled.nav`
-  ${() =>
-    title &&
-    css`
-      background-color: turquoise;
-    `}
-
+  font-size: ${(props) => props.fontSize}px;
+  background-color: ${(props) => props.backgroundColor};
   @media (max-width: 1220px) {
     min-width: max-content;
   }
-  @media(min-width: 1220px){
+  @media (min-width: 1220px) {
     width: auto;
   }
 `;
 
+
+const Link = styled.a`
+  color: ${(props) => props.color} !important;
+`;
+
+const ListITem = styled.li`
+  &.open {
+    background-color: ${(props) => props.selBg};
+  }
+`;
+
+const Childa = styled.a`
+  color: ${props=>props.fontColor};
+  :hover {
+    text-decoration: none;
+    background-color: ${props=>props.backgroundColor};
+  }
+`;
+
+const Ul = styled.ul`
+  background-color: ${(props) => props.backgroundColor};
+  font-size: ${(props) => props.fontSize}px;
+  ${Childa}{
+    color: ${(props) => props.color};
+  }
+`;
+
+const Span = styled.span`
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
+  font-size: ${(props) => props.fontSize}px;
+  height: 15px;
+  border-radius: 30%;
+  text-align: center;
+  display: inline-block;
+  padding: 1px 6px 15px 5px;
+  line-height: 12px;
+  vertical-align: 5px;
+  margin-left: 2px;
+`;
+
 const Navbar = () => {
+  const {
+    fontSize,
+    backgroundColor,
+    fontColor,
+    notification,
+    dropdown,
+  } = useSelector((state) => state.counter);
   return (
-    <NavBar className="navbar navbar-default navbar-static-top">
+    <NavBar
+      className="navbar navbar-default navbar-static-top"
+      fontSize={fontSize}
+      backgroundColor={backgroundColor}
+    >
       <div className="container">
         <div className="navbar-header">
-          <button
-            type="button"
-            className="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#app-navbar-collapse"
-          >
-            <span className="sr-only">Toggle Navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="https://jstris.jezevec10.com/">
+          <Link color={fontColor} className="navbar-brand" href="#">
             Jstris
-          </a>
+          </Link>
         </div>
         <div className="collapse navbar-collapse" id="app-navbar-collapse">
           <ul className="nav navbar-nav" id="mnav">
-            <li
+            <ListITem
+              selBg={dropdown.selectedBackground}
               id="playDD"
               onClick={() =>
                 document.getElementById("playDD").classList.toggle("open")
               }
               className="dropdown"
             >
-              <a
+              <Link
                 href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
+                color={fontColor}
               >
                 Play <span className="caret"></span>
-              </a>
-              <ul className="dropdown-menu" role="menu">
+              </Link>
+              <Ul
+                fontSize={dropdown.fontSize}
+                backgroundColor={dropdown.backgroundColor}
+                color={dropdown.fontColor}
+                className="dropdown-menu"
+                role="menu"
+              >
                 <li>
-                  <a href="https://jstris.jezevec10.com/">Live</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    Live
+                  </Childa>
                 </li>
                 <li className="dropdown-submenu">
-                  <a
+                  <Childa
+                    backgroundColor={dropdown.hoverBackground}
                     tabIndex="-1"
-                    href="https://jstris.jezevec10.com/play/sprint"
+                    href="#"
                   >
                     Sprint
-                  </a>
+                  </Childa>
                   <ul className="dropdown-menu">
                     <li>
-                      <a href="#">20L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        20L
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">40L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        40L
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">100L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        100L
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">1000L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        1000L
+                      </Childa>
                     </li>
                   </ul>
                 </li>
                 <li className="dropdown-submenu">
-                  <a tabIndex="-1" href="cheeseRace">
+                  <Childa
+                    backgroundColor={dropdown.hoverBackground}
+                    tabIndex="-1"
+                    href="cheeseRace"
+                  >
                     Cheese race
-                  </a>
+                  </Childa>
                   <ul className="dropdown-menu">
                     <li>
-                      <a href="#">10L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        10L
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">18L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        18L
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">100L</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        100L
+                      </Childa>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Map downstack</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    Map downstack
+                  </Childa>
                 </li>
                 <li>
-                  <a href="#">Survival</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    Survival
+                  </Childa>
                 </li>
                 <li>
-                  <a href="#">Ultra</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    Ultra
+                  </Childa>
                 </li>
                 <li>
-                  <a href="#">20TSD</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    20TSD
+                  </Childa>
                 </li>
                 <li>
-                  <a href="#">PC Mode</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    PC Mode
+                  </Childa>
                 </li>
                 <li>
-                  <a href="#">Practice</a>
+                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                    Practice
+                  </Childa>
                 </li>
                 <li className="dropdown-submenu">
-                  <a tabIndex="-1" href="#">
+                  <Childa
+                    backgroundColor={dropdown.hoverBackground}
+                    tabIndex="-1"
+                    href="#"
+                  >
                     Rulesets
-                  </a>
+                  </Childa>
                   <ul className="dropdown-menu">
                     <li>
-                      <a href="#">Big mode</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        Big mode
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">Pentomino</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        Pentomino
+                      </Childa>
                     </li>
                     <li>
-                      <a href="#">MPH</a>
+                      <Childa
+                        backgroundColor={dropdown.hoverBackground}
+                        href="#"
+                      >
+                        MPH
+                      </Childa>
                     </li>
                   </ul>
                 </li>
-              </ul>
-            </li>
+              </Ul>
+            </ListITem>
             <li className="dropdown ">
-              <a
+              <Link
                 href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
+                color={fontColor}
               >
                 Leaderboard <span className="caret"></span>
-              </a>
-              <ul className="dropdown-menu" role="menu">
-                <li className="">
-                  <a href="#">Sprint</a>
-                </li>
-                <li className="">
-                  <a href="#">Cheese race</a>
-                </li>
-                <li className="">
-                  <a href="#">Survival</a>
-                </li>
-                <li className="">
-                  <a href="#">Ultra</a>
-                </li>
-                <li className="">
-                  <a href="#">20TSD</a>
-                </li>
-                <li className="">
-                  <a href="#">PC Mode</a>
-                </li>
-              </ul>
+              </Link>
             </li>
             <li className="dropdown ">
-              <a
+              <Link
                 href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
+                color={fontColor}
               >
                 Maps <span className="caret"></span>
-              </a>
-              <ul className="dropdown-menu" role="menu">
-                <li className="">
-                  <a href="#">Browse</a>
-                </li>
-                <li>
-                  <a href="#">Random map</a>
-                </li>
-                <li className="">
-                  <a href="#">My maps</a>
-                </li>
-                <li className="">
-                  <a href="#">Map Designer</a>
-                </li>
-                <li className="">
-                  <a href="#">Latest games</a>
-                </li>
-                <li className="">
-                  <a href="#">Leaderboard</a>
-                </li>
-              </ul>
+              </Link>
             </li>
             <li className="dropdown ">
-              <a
+              <Link
                 href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
+                color={fontColor}
               >
                 Usermodes <span className="caret"></span>
-              </a>
-              <ul className="dropdown-menu" role="menu">
-                <li className="">
-                  <a href="#">Browse</a>
-                </li>
-                <li className="">
-                  <a href="#">My modes</a>
-                </li>
-                <li className="">
-                  <a href="#">Create</a>
-                </li>
-              </ul>
+              </Link>
             </li>
             <li className="">
-              <a href="#">About</a>
+              <Link color={fontColor} href="#">
+                About
+              </Link>
             </li>
             <li className="">
-              <a href="#">Donate</a>
+              <Link color={fontColor} href="#">
+                Donate
+              </Link>
             </li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li className="dropdown">
-              <a
+              <Link
                 href="#"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
                 aria-expanded="false"
+                color={fontColor}
               >
                 Username
-                <span className="notification-count">69</span>
+                <Span
+                  fontSize={notification.fontSize}
+                  backgroundColor={notification.backgroundColor}
+                  color={notification.fontColor}
+                  className="notification-count"
+                >
+                  69
+                </Span>
                 <span className="caret"></span>
-              </a>
-              <ul className="dropdown-menu" role="menu">
-                <li>
-                  <a href="#">My profile</a>
-                </li>
-                <li>
-                  <a href="#">My improvement</a>
-                </li>
-                <li>
-                  <a href="#">
-                    Friends <span className="notification-count">2</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Favorite replays</a>
-                </li>
-                <li>
-                  <a href="#">Settings</a>
-                </li>
-                <li>
-                  <a href="#">Logout </a>
-                </li>
-              </ul>
+              </Link>
             </li>
           </ul>
         </div>
