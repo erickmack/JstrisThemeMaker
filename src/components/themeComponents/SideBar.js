@@ -1,5 +1,6 @@
 import ChangeOption from "./ChangeOption";
-import Navigation from './Navigation'
+import Navigation from "./Navigation";
+import Background from "./Background";
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -17,6 +18,7 @@ const SideMenu = styled.div`
   background-color: ${(props) => props.theme[theme].bg};
   display: grid;
   height: 100%;
+  max-height: 90vh;
   &.menu-primary-enter {
     transform: translateX(-110%);
   }
@@ -67,7 +69,15 @@ const SideBar = () => {
         classNames="sideMenu"
         unmountOnExit
       >
-       <Navigation name={'main'} handleClick={handleClick}/>
+        <Navigation handleClick={handleClick} />
+      </CSSTransition>
+      <CSSTransition
+        in={activeMenu === "Background"}
+        timeout={500}
+        classNames="sideMenu"
+        unmountOnExit
+      >
+        <Background handleClick={handleClick} />
       </CSSTransition>
     </Side>
   );

@@ -20,7 +20,7 @@ const NavColors = ({toChange,obj,whichColor,type}) => {
     fontColor,
     notification,
     dropdown,
-  } = useSelector((state) => state.counter);
+  } = useSelector((state) => state.navigation);
   const [input, setInput] = useState({
     backgroundColor,
     fontColor,

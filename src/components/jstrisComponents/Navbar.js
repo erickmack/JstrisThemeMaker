@@ -61,7 +61,7 @@ const Navbar = () => {
     fontColor,
     notification,
     dropdown,
-  } = useSelector((state) => state.counter);
+  } = useSelector((state) => state.navigation);
   return (
     <NavBar
       className="navbar navbar-default navbar-static-top"

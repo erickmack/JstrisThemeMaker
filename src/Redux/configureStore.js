@@ -1,8 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+
 import navigationSlice from "./NavigationSlice";
+import backgroundSlice from "./BackgroundSlice";
 
 const reducer = combineReducers({
-  counter: navigationSlice,
+  navigation: navigationSlice,
+  background: backgroundSlice,
 });
 
 const store = configureStore({

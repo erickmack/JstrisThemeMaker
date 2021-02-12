@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const navigationSlice = createSlice({
-  name: "counter",
+  name: "navigation",
   initialState: {
     fontSize: 17,
     backgroundColor: "#375a7f",
@@ -22,7 +22,7 @@ const navigationSlice = createSlice({
   reducers: {
     changeFont: (state, action) => ({
       ...state,
-      fontSize: action.payload.fontColor,
+      fontSize: action.payload.font,
     }),
     changeBackground: (state, action) => ({
       ...state,

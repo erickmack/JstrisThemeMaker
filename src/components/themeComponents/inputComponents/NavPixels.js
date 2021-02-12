@@ -13,7 +13,7 @@ const Pixels = ({obj,type}) => {
     fontSize,
     notification,
     dropdown,
-  } = useSelector((state) => state.counter);
+  } = useSelector((state) => state.navigation);
   const [input, setInput] = useState({
     fontSize,
     notification,
