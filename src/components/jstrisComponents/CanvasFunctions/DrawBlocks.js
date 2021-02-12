@@ -1,15 +1,17 @@
 import DrawBlock from "./DrawBlock";
 
-const DrawBlocks = () => {
+const DrawBlocks = (skin,ghost) => {
   const gamecanvas = document.getElementById("myCanvas");
   const gamectx = gamecanvas.getContext("2d");
+
+  gamectx.clearRect(0,336,gamecanvas.width,96)
 
   var tex = new Image();
   tex.onload = function () {
     createTKI();
     addGarbage();
   };
-  tex.src = "https://i.imgur.com/J5LG3O8.png";
+  tex.src = skin;
 
   function createTKI() {
     // Draw L
@@ -50,7 +52,7 @@ const DrawBlocks = () => {
   }
 
   function addGarbage() {
-    let random = Math.floor(Math.random() * 100 + 1);
+    let random = 20 //Math.floor(Math.random() * 100 + 1);
     function getHole() {
       return Math.floor(Math.random() * 10);
     }
@@ -88,21 +90,23 @@ const DrawBlocks = () => {
   }
 
   var ghostTex = new Image();
-  ghostTex.onload = function () {
+  ghostTex.onload = ghostT
+  ghostTex.src = ghost;
+
+  function ghostT() {
     // Draw Ghost T
     DrawBlock(gamectx, 1, 12, 8, true, tex);
     DrawBlock(gamectx, 2, 11, 8, true, tex);
     DrawBlock(gamectx, 2, 12, 8, true, tex);
     DrawBlock(gamectx, 2, 13, 8, true, tex);
   };
-  ghostTex.src = "https://i.imgur.com/2cXLnkR.png";
 
-  function drawRectangle(blockX, blockY, sizeX, sizeY, color) {
-    gamectx.beginPath();
-    gamectx.rect(blockX, blockY, sizeX, sizeY);
-    gamectx.fillStyle = color;
-    gamectx.fill();
-  }
+  // function drawRectangle(blockX, blockY, sizeX, sizeY, color) {
+  //   gamectx.beginPath();
+  //   gamectx.rect(blockX, blockY, sizeX, sizeY);
+  //   gamectx.fillStyle = color;
+  //   gamectx.fill();
+  // }
 };
 
 export default DrawBlocks;

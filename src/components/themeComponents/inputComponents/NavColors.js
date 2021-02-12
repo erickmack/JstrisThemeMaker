@@ -13,89 +13,57 @@ import {
   changeDropdownHover,
   changeDropdownSel,
 } from "../../../Redux/NavigationSlice";
-const NavColors = ({toChange,obj,whichColor,type}) => {
+const NavColors = ({ toChange, obj, whichColor, type }) => {
   const dispatch = useDispatch();
-  const {
-    backgroundColor,
-    fontColor,
-    notification,
-    dropdown,
-  } = useSelector((state) => state.navigation);
+  const { backgroundColor, fontColor, notification, dropdown } = useSelector(
+    (state) => state.navigation
+  );
   const [input, setInput] = useState({
     backgroundColor,
     fontColor,
     notification,
     dropdown,
   });
-  const handleComplete = (color, type,which) => {
+  const handleComplete = (color, type, which) => {
     switch (type) {
       case "font":
-        setInput({ ...input, [which]: color });
-        setTimeout(() => {
-          dispatch(changeFontColor({ [which]: color }));
-        }, 100);
+        dispatch(changeFontColor({ [which]: color }));
         break;
       case "bg":
-        setInput({ ...input, [which]: color });
-        setTimeout(() => {
-          dispatch(changeBackground({ [which]: color }));
-        }, 100);
+        dispatch(changeBackground({ [which]: color }));
         break;
       case "notifColor":
-        setInput({
-          ...input,
-          notification: { ...input.notification, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeNotifColor({ [which]: color }));
-        }, 100);
+        dispatch(changeNotifColor({ [which]: color }));
         break;
       case "notifBg":
-        setInput({
-          ...input,
-          notification: { ...input.notification, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeNotifBg({ [which]: color }));
-        }, 100);
+        dispatch(changeNotifBg({ [which]: color }));
         break;
-        case "ddBg":
-        setInput({
-          ...input,
-          dropdown: { ...input.dropdown, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeDropdownBackground({ [which]: color }));
-        }, 100);
+      case "ddBg":
+        dispatch(changeDropdownBackground({ [which]: color }));
         break;
-        case "ddSel":
-        setInput({
-          ...input,
-          dropdown: { ...input.dropdown, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeDropdownSel({ backgroundColor: color }));
-        }, 100);
+      case "ddSel":
+        dispatch(changeDropdownSel({ backgroundColor: color }));
         break;
-        case "ddColor":
-        setInput({
-          ...input,
-          dropdown: { ...input.dropdown, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeDropdownColor({ [which]: color }));
-        }, 100);
+      case "ddColor":
+        dispatch(changeDropdownColor({ [which]: color }));
         break;
-        case "ddHover":
-        setInput({
-          ...input,
-          dropdown: { ...input.dropdown, [which]: color },
-        });
-        setTimeout(() => {
-          dispatch(changeDropdownHover({ backgroundColor: color }));
-        }, 100);
+      case "ddHover":
+        dispatch(changeDropdownHover({ backgroundColor: color }));
         break;
       default:
+        break;
+    }
+  };
+  const handleChange = (color, which, obj) => {
+    switch (obj) {
+      case false:
+        setInput({ ...input, [which]: color });
+        break;
+      default:
+        setInput({
+          ...input,
+          [obj]: { ...input[obj], [which]: color },
+        });
         break;
     }
   };
@@ -104,9 +72,10 @@ const NavColors = ({toChange,obj,whichColor,type}) => {
       <div className="inputs">
         <p>Change {toChange} color</p>
         <ChromePicker
-          color={obj?input[obj][whichColor]:input[whichColor]}
+          color={obj ? input[obj][whichColor] : input[whichColor]}
+          onChange={({ hex }) => handleChange(hex, whichColor, obj || false)}
           onChangeComplete={({ hex }) => {
-            handleComplete(hex, type,whichColor);
+            handleComplete(hex, type, whichColor);
           }}
           disableAlpha={true}
           width={140}

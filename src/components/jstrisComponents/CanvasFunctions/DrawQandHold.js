@@ -1,6 +1,6 @@
 import DrawBlock from "./DrawBlock";
 
-function DrawQandHold() {
+function DrawQandHold(skin) {
   const holdcanvas = document.getElementById("holdCanvas");
   const hctx = holdcanvas.getContext("2d");
 
@@ -17,7 +17,7 @@ function DrawQandHold() {
     drawPiece(qctx, "T", 9);
     drawPiece(qctx, "J", 12);
   };
-  tex.src = "https://i.imgur.com/J5LG3O8.png";
+  tex.src = skin;
 
   const pieces = {
     I: { shape: ["0000", "1111", "0000", "0000"], color: "#0F9BD7" },
@@ -32,7 +32,7 @@ function DrawQandHold() {
   };
 
   function drawPiece(ctx, type, yoffset) {
-    if (ctx.canvas.id == "holdCanvas") {
+    if (ctx.canvas.id === "holdCanvas") {
       clearHoldCanvas();
     }
     for (var i = 0; i < 4; i++) {

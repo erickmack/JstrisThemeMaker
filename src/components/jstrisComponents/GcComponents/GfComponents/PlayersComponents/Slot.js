@@ -19,7 +19,7 @@ const AttackLine = styled.div`
 
 const Slot = () => {
   useEffect(() => {
-    DrawBgGrid(1, ".bgLayer");
+    DrawBgGrid(1, ".bgLayer",23);
   }, []);
   return (
     <>

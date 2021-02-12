@@ -1,6 +1,7 @@
 import ChangeOption from "./ChangeOption";
 import Navigation from "./Navigation";
 import Background from "./Background";
+import Board from './Board'
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -78,6 +79,14 @@ const SideBar = () => {
         unmountOnExit
       >
         <Background handleClick={handleClick} />
+      </CSSTransition>
+      <CSSTransition
+        in={activeMenu === "Board"}
+        timeout={500}
+        classNames="sideMenu"
+        unmountOnExit
+      >
+        <Board handleClick={handleClick} />
       </CSSTransition>
     </Side>
   );

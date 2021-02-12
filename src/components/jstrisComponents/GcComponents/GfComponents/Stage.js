@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import {useSelector} from 'react-redux'
 import styled from "styled-components";
 
 import DrawBlocks from "../../CanvasFunctions/DrawBlocks";
@@ -8,7 +9,7 @@ import DrawQandHold from "../../CanvasFunctions/DrawQandHold";
 const AttackLine = styled.div`
   width: 5px;
   height: 120px;
-  background-color: red;
+  background-color: ${props=>props.color};
   z-index: 44;
   float: right;
   position: inherit;
@@ -17,11 +18,12 @@ const AttackLine = styled.div`
 `;
 
 function Stage() {
+  const {skin,ghostSkin,attackColor} = useSelector(state => state.board)
   useEffect(() => {
-    DrawBlocks();
-    DrawBgGrid(1, "#bgLayer");
-    DrawQandHold();
-  }, []);
+    DrawBlocks(skin,ghostSkin);
+    DrawBgGrid(1, "#bgLayer",24);
+    DrawQandHold(skin);
+  }, [skin,ghostSkin]);
   return (
     <div id="stage">
       <canvas id="bgLayer" className="layer" width="248" height="480"></canvas>
@@ -32,7 +34,7 @@ function Stage() {
         height="480"
         tabIndex="1"
       ></canvas>
-      <AttackLine></AttackLine>
+      <AttackLine color={attackColor}></AttackLine>
     </div>
   );
 }

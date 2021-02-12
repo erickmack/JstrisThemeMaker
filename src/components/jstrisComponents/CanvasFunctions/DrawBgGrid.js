@@ -1,8 +1,8 @@
-const DrawBgGrid = (mode,elem) => {
+const DrawBgGrid = (mode,elem,size) => {
   const bgcanvas = document.querySelector(elem);
   const bgctx = bgcanvas.getContext("2d");
 
-  const block_size = 24;
+  const block_size = size;
 
   mode = typeof mode === "undefined" ? 1 : mode; //default value for optinal parameter
   bgctx.rect(0, 0, bgcanvas.width, bgcanvas.height);
