@@ -7,24 +7,33 @@ const Button = styled.button``;
 const ButtonBox = styled.div`
   ${Button} {
     background-color: ${(props) => props.bgc};
-    border: ${(props) => props.border};
-    padding: 0 ${(props) => props.padding}px;
+    border: ${(props) =>
+      props.border === "none" ? "none" : props.border + "px"};
+    border-color: ${(props) => props.bcolor};
+    padding: ${(props) => props.padding};
     border-radius: ${(props) => props.radius}px;
     color: ${(props) => props.color};
   }
 `;
 
 const Buttons = () => {
-  const { backgroundColor, color, border, padding, borderRadius } = useSelector(
-    (state) => state.button
-  );
+  const {
+    backgroundColor,
+    color,
+    border,
+    padding,
+    borderRadius,
+    borderColor,
+  } = useSelector((state) => state.button);
+  let pad = `${padding.split(" ")[0]}px ${padding.split(" ")[1]}px`;
   return (
     <ButtonBox
       bgc={backgroundColor}
       border={border}
-      padding={padding}
+      padding={pad}
       radius={borderRadius}
       color={color}
+      bcolor={borderColor}
       id="buttonsBox"
     >
       <Button>Lobby</Button>

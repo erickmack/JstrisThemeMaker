@@ -27,8 +27,11 @@ const Background = ({ handleClick }) => {
   const [value,setValue] = useState(100)
 
   function handleComplete(color) {
-    setColor(color);
     dispatch(changeColor({ color }));
+  }
+
+  function handleChange(color){
+    setColor(color);
   }
 
   function handleSave() {
@@ -77,6 +80,7 @@ const Background = ({ handleClick }) => {
       <p>Change background color</p>
       <ChromePicker
         color={color}
+        onChange={({hex})=>handleChange(hex)}
         onChangeComplete={({ hex }) => {
           handleComplete(hex);
         }}

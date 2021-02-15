@@ -5,8 +5,9 @@ const buttonSlice = createSlice({
   initialState: {
     backgroundColor: "#8e8e8e",
     color: "#000",
-    border: "",
-    padding: 8,
+    border: "solid 2",
+    borderColor: '#fff',
+    padding: '0 8',
     borderRadius: 0,
   },
   reducers: {
@@ -21,6 +22,10 @@ const buttonSlice = createSlice({
     changeBorder: (state, action) => ({
       ...state,
       border: action.payload.border,
+    }),
+    changeBorderColor: (state,action)=>({
+        ...state,
+        borderColor: action.payload.color
     }),
     changePadding: (state, action) => ({
       ...state,
@@ -37,6 +42,7 @@ export const {
   changeBackgroundColor,
   changeColor,
   changeBorder,
+  changeBorderColor,
   changePadding,
   changeBorderRadius,
 } = buttonSlice.actions;

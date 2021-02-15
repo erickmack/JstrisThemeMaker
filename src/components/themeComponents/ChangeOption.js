@@ -3,12 +3,16 @@ import styled from "styled-components";
 let theme = "solarized";
 
 const Button = styled.button`
-  background-color: ${(props) => props.theme[theme].main};
+  background-color: #3b3b4f};
   margin: 0 10px 10px 10px;
-  color: ${(props) => props.theme[theme].bg};
-  border: none;
+  color: white;
+  border: 2px solid white;
   font-weight: bold;
   border-radius: 4px;
+  &:hover{
+    background-color: #f3f3f3;
+    color: #222
+  }
 `;
 
 const ChangeOption = ({ name, handleClick }) => {

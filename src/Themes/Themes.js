@@ -1,6 +1,6 @@
 export default {
     dark:{
-        bg: '#242526',
+        bg: '#1b1b32',
         bgAccent: '#484a4d',
         textColor: '#dadce1',
         light: '#e9c46a',
