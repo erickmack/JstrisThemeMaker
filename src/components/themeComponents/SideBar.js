@@ -2,6 +2,7 @@ import ChangeOption from "./ChangeOption";
 import Navigation from "./Navigation";
 import Background from "./Background";
 import Board from './Board'
+import Buttons from './Buttons'
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -67,7 +68,7 @@ const SideBar = () => {
       <CSSTransition
         in={activeMenu === "Navigation"}
         timeout={500}
-        classNames="sideMenu"
+        classNames="menu-secondary"
         unmountOnExit
       >
         <Navigation handleClick={handleClick} />
@@ -75,7 +76,7 @@ const SideBar = () => {
       <CSSTransition
         in={activeMenu === "Background"}
         timeout={500}
-        classNames="sideMenu"
+        classNames="menu-secondary"
         unmountOnExit
       >
         <Background handleClick={handleClick} />
@@ -83,10 +84,18 @@ const SideBar = () => {
       <CSSTransition
         in={activeMenu === "Board"}
         timeout={500}
-        classNames="sideMenu"
+        classNames="menu-secondary"
         unmountOnExit
       >
         <Board handleClick={handleClick} />
+      </CSSTransition>
+      <CSSTransition
+        in={activeMenu === "Buttons"}
+        timeout={500}
+        classNames="menu-secondary"
+        unmountOnExit
+      >
+        <Buttons handleClick={handleClick} />
       </CSSTransition>
     </Side>
   );

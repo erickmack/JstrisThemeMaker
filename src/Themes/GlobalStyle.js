@@ -12,34 +12,31 @@ const GlobalStyle = createGlobalStyle`
     background-color: #f2f2f2;
     display: block;
   }
-    .sideMenu-enter {
+
+  .menu-primary-enter {
+    transform: translateX(-110%);
+  }
+  .menu-primary-enter-done {
+    transform: translateX(0%);
+    transition: all 500ms ease-in;
+  }
+  .menu-primary-exit-active {
+    transform: translateX(-110%);
+    transition: all 5000ms ease-out;
+  }
+
+  .menu-secondary-enter {
     transform: translateX(110%);
   }
-  .sideMenu-enter-active {
+  .menu-secondary-enter-done {
     transform: translateX(0%);
     transition: all 500ms ease;
   }
-
-  .sideMenu-enter-done{
-    overflow: scroll;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    height: 90vh;
-    &::-webkit-scrollbar {
-    width: 12px;
-    }
-    &::-webkit-scrollbar-thumb{
-      background-color:#333
-    }
-  }
-
-  .sideMenu-exit {
-  
-  }
-  .sideMenu-exit-active {
+  .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all 500ms ease;
   }
+
 `;
 
 export default GlobalStyle;
