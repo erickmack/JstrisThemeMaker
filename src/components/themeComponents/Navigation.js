@@ -1,5 +1,6 @@
 import NavPixels from "./inputComponents/NavPixels";
 import NavColors from "./inputComponents/NavColors";
+import BackgroundImage from './inputComponents/BackgroundImage'
 import GoBack from "./GoBack";
 
 const Navigation = ({ handleClick }) => {
@@ -13,6 +14,7 @@ const Navigation = ({ handleClick }) => {
         toChange={"background"}
         whichColor={"backgroundColor"}
       />
+      <BackgroundImage/>
       <NavColors
         obj={false}
         type={"font"}

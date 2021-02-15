@@ -31,6 +31,16 @@ const GlobalStyle = createGlobalStyle`
   .menu-secondary-enter-done {
     transform: translateX(0%);
     transition: all 500ms ease;
+    overflow: scroll;
+    height: 90vh;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #333;
+  }
   }
   .menu-secondary-exit-active {
     transform: translateX(110%);

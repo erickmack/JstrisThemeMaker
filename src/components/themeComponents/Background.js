@@ -69,7 +69,7 @@ const Background = ({ handleClick }) => {
     dispatch(changeSize({ size: `${event.target.value}%` }));
   }
 
-  let sizes = ["Auto", "Cover", "Contain", "Percentage"];
+  const sizes = ["Auto", "Cover", "Contain", "Percentage"];
 
   return (
     <div>
@@ -83,7 +83,7 @@ const Background = ({ handleClick }) => {
         disableAlpha={true}
         width={140}
       />
-      <p>Change background image (optional)</p>
+      <p>Add background image</p>
       <BgLink
         id="bgLink"
         type="text"

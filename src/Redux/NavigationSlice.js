@@ -5,6 +5,8 @@ const navigationSlice = createSlice({
   initialState: {
     fontSize: 17,
     backgroundColor: "#375a7f",
+    backgroundImage: "",
+    backgroundSize: "auto",
     fontColor: "#fff",
     notification: {
       fontSize: 12,
@@ -28,6 +30,14 @@ const navigationSlice = createSlice({
       ...state,
       backgroundColor: action.payload.backgroundColor,
     }),
+    changeBackgroundImage: (state, action) => ({
+      ...state,
+      backgroundImage: action.payload.link,
+    }),
+    changeBackgroundSize: (state, action) => ({
+      ...state,
+      backgroundSize: action.payload.size,
+    }),
     changeFontColor: (state, action) => ({
       ...state,
       fontColor: action.payload.fontColor,
@@ -45,15 +55,24 @@ const navigationSlice = createSlice({
     }),
     changeNotifColor: (state, action) => ({
       ...state,
-      notification: { ...state.notification, fontColor: action.payload.fontColor },
+      notification: {
+        ...state.notification,
+        fontColor: action.payload.fontColor,
+      },
     }),
     changeDropdownSel: (state, action) => ({
       ...state,
-      dropdown: { ...state.dropdown, selectedBackground: action.payload.backgroundColor },
+      dropdown: {
+        ...state.dropdown,
+        selectedBackground: action.payload.backgroundColor,
+      },
     }),
     changeDropdownBackground: (state, action) => ({
       ...state,
-      dropdown: { ...state.dropdown, backgroundColor: action.payload.backgroundColor },
+      dropdown: {
+        ...state.dropdown,
+        backgroundColor: action.payload.backgroundColor,
+      },
     }),
     changeDropdownColor: (state, action) => ({
       ...state,
@@ -61,7 +80,10 @@ const navigationSlice = createSlice({
     }),
     changeDropdownHover: (state, action) => ({
       ...state,
-      dropdown: { ...state.dropdown, hoverBackground: action.payload.backgroundColor },
+      dropdown: {
+        ...state.dropdown,
+        hoverBackground: action.payload.backgroundColor,
+      },
     }),
     changeDropdownFont: (state, action) => ({
       ...state,
@@ -73,6 +95,8 @@ const navigationSlice = createSlice({
 export const {
   changeFont,
   changeBackground,
+  changeBackgroundImage,
+  changeBackgroundSize,
   changeFontColor,
   changeNotifSize,
   changeNotifBg,

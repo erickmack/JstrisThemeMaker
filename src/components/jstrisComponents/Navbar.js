@@ -5,6 +5,8 @@ import styled from "styled-components";
 const NavBar = styled.nav`
   font-size: ${(props) => props.fontSize}px;
   background-color: ${(props) => props.backgroundColor};
+  background-image: url("${(props) => props.image}");
+  background-size: ${(props) => props.size};
   @media (max-width: 1220px) {
     min-width: max-content;
   }
@@ -12,7 +14,6 @@ const NavBar = styled.nav`
     width: auto;
   }
 `;
-
 
 const Link = styled.a`
   color: ${(props) => props.color} !important;
@@ -25,17 +26,17 @@ const ListITem = styled.li`
 `;
 
 const Childa = styled.a`
-  color: ${props=>props.fontColor};
+  color: ${(props) => props.fontColor};
   :hover {
     text-decoration: none;
-    background-color: ${props=>props.backgroundColor};
+    background-color: ${(props) => props.backgroundColor};
   }
 `;
 
 const Ul = styled.ul`
   background-color: ${(props) => props.backgroundColor};
   font-size: ${(props) => props.fontSize}px;
-  ${Childa}{
+  ${Childa} {
     color: ${(props) => props.color};
   }
 `;
@@ -58,6 +59,8 @@ const Navbar = () => {
   const {
     fontSize,
     backgroundColor,
+    backgroundImage,
+    backgroundSize,
     fontColor,
     notification,
     dropdown,
@@ -67,6 +70,8 @@ const Navbar = () => {
       className="navbar navbar-default navbar-static-top"
       fontSize={fontSize}
       backgroundColor={backgroundColor}
+      image={backgroundImage}
+      size={backgroundSize}
     >
       <div className="container">
         <div className="navbar-header">
