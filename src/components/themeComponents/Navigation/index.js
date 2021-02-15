@@ -1,7 +1,7 @@
-import NavPixels from "./inputComponents/NavPixels";
-import NavColors from "./inputComponents/NavColors";
-import BackgroundImage from './inputComponents/BackgroundImage'
-import GoBack from "./GoBack";
+import NavPixels from "./NavPixels";
+import NavColors from "./NavColors";
+import BackgroundImage from './BackgroundImage'
+import GoBack from "../GoBack";
 
 const Navigation = ({ handleClick }) => {
   return (

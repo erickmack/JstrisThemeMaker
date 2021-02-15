@@ -1,5 +1,5 @@
 import ChangeOption from "./ChangeOption";
-import Navigation from "./Navigation";
+import Navigation from "./Navigation/index";
 import Background from "./Background";
 import Board from './Board'
 import Buttons from './Buttons'

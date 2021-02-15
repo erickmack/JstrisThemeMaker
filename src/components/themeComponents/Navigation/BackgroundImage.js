@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import styled from "styled-components";
 
-import Sizes from "./Sizes";
+import Sizes from "../inputComponents/Sizes";
 import {
   changeBackgroundImage,
   changeBackgroundSize,
