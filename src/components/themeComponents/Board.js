@@ -1,5 +1,6 @@
 import GoBack from "./GoBack";
-import { ChromePicker } from "react-color";
+import NumberInput from "./inputComponents/NumberInput";
+import ColorInput from "./inputComponents/ColorInput";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -44,10 +45,10 @@ const Board = ({ handleClick }) => {
 
   function handleChange(color, type) {
     setState({ ...state, [type]: color });
-    if(type==='numberSize'){
-        dispatch(changeNumberSize({size:color}))
-    }else if(type==='sprintSize'){
-        dispatch(changeSprintSize({size:color}))
+    if (type === "numberSize") {
+      dispatch(changeNumberSize({ size: color }));
+    } else if (type === "sprintSize") {
+      dispatch(changeSprintSize({ size: color }));
     }
   }
 
@@ -74,41 +75,38 @@ const Board = ({ handleClick }) => {
         placeholder="https://s.jezevec10.com/res/b/20/51.png"
       ></input>
       <button onClick={(e) => handleSave("ghost", "ghostLink")}>Save</button>
-      <p>Attack line color</p>
-      <ChromePicker
-        onChange={(color) => handleChange(color, attack)}
-        onChangeComplete={(color) => handleComplete(color, attack)}
-        color={state[attack]}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Attack line color"}
+        handleChange={handleChange}
+        handleComplete={handleComplete}
+        type={attack}
+        value={state[attack]}
       />
-      <p>Lines left font size</p>
-      <input
-        type="number"
+      <NumberInput
+        description={"Lines left font size"}
+        ID={"numberSize"}
         value={state.numberSize}
-        onChange={(e) => handleChange(e.target.value,'numberSize')}
+        inputChange={handleChange}
       />
-      <p>Lines left color</p>
-      <ChromePicker
-        onChange={(color) => handleChange(color, number)}
-        onChangeComplete={(color) => handleComplete(color, number)}
-        color={state[number]}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Lines left color"}
+        handleChange={handleChange}
+        handleComplete={handleComplete}
+        type={number}
+        value={state[number]}
       />
-      <p>Info text font size</p>
-      <input
-        type="number"
+      <NumberInput
+        description={"Info text font size"}
+        id={"sprintSize"}
         value={state.sprintSize}
-        onChange={(e) => handleChange(e.target.value,"sprintSize")}
+        inputChange={handleChange}
       />
-      <p>Info text color</p>
-      <ChromePicker
-        onChange={(color) => handleChange(color, sprint)}
-        onChangeComplete={(color) => handleComplete(color, sprint)}
-        color={state[sprint]}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Info text color"}
+        handleChange={handleChange}
+        handleComplete={handleComplete}
+        type={sprint}
+        value={state[sprint]}
       />
     </div>
   );

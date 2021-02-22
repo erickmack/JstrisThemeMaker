@@ -1,7 +1,7 @@
 import GoBack from "./GoBack";
-
-import { ChromePicker } from "react-color";
-import Sizes from "./inputComponents/Sizes";
+import ColorInput from "./inputComponents/ColorInput";
+import ImageInput from "./inputComponents/ImageInput";
+import BgSize from "./inputComponents/BgSize";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -24,14 +24,14 @@ const Background = ({ handleClick }) => {
   const { backgroundColor } = useSelector((state) => state.background);
   const [color, setColor] = useState(backgroundColor);
   const [isPercentage, setIsPercentage] = useState(false);
-  const [value,setValue] = useState(100)
+  const [value, setValue] = useState(100);
 
-  function handleComplete(color) {
-    dispatch(changeColor({ color }));
+  function handleComplete({ hex }) {
+    dispatch(changeColor({ color: hex }));
   }
 
-  function handleChange(color){
-    setColor(color);
+  function handleChange({ hex }) {
+    setColor(hex);
   }
 
   function handleSave() {
@@ -41,11 +41,10 @@ const Background = ({ handleClick }) => {
 
   function handleSelect(type) {
     try {
-      document.querySelector('button.selected').classList.remove('selected')
-    } catch {
-    }
-    let selection = document.querySelector(`#${type}`)
-    selection.classList.add('selected')
+      document.querySelector("button.selected").classList.remove("selected");
+    } catch {}
+    let selection = document.querySelector(`#${type}`);
+    selection.classList.add("selected");
     switch (type) {
       case "Auto":
         dispatch(changeSize({ size: "auto" }));
@@ -71,46 +70,28 @@ const Background = ({ handleClick }) => {
     setValue(event.target.value);
     dispatch(changeSize({ size: `${event.target.value}%` }));
   }
-
-  const sizes = ["Auto", "Cover", "Contain", "Percentage"];
-
   return (
     <div>
       <GoBack handleClick={handleClick} />
-      <p>Change background color</p>
-      <ChromePicker
-        color={color}
-        onChange={({hex})=>handleChange(hex)}
-        onChangeComplete={({ hex }) => {
-          handleComplete(hex);
-        }}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Change background color"}
+        value={color}
+        handleChange={handleChange}
+        type={"bgColor"}
+        handleComplete={handleComplete}
       />
-      <p>Add background image</p>
-      <BgLink
-        id="bgLink"
-        type="text"
-        placeholder="https://i.imgur.com/YfV0NmQ.jpg"
-      ></BgLink>
-      <button onClick={handleSave}>Save</button>
-      <p>Background size:</p>
-      <div className="sizes">
-        {sizes.map((size) => (
-          <Sizes key={size} name={size} handleSelect={handleSelect} />
-        ))}
-      </div>
-      {isPercentage && (
-        <div>
-          <input
-            onChange={(e) => handleSlide(e)}
-            type="range"
-            min="1"
-            max="100"
-            value={value}
-          ></input>
-        </div>
-      )}
+      <ImageInput
+        description={"Add background image"}
+        ID={"bgLink"}
+        placeholder={"https://i.imgur.com/YfV0NmQ.jpg"}
+        handleSave={handleSave}
+      />
+      <BgSize
+        handleSelect={handleSelect}
+        isPercentage={isPercentage}
+        handleSlide={handleSlide}
+        value={value}
+      />
     </div>
   );
 };

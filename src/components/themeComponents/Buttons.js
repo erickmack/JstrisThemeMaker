@@ -1,4 +1,6 @@
 import GoBack from "./GoBack";
+import NumberInput from "./inputComponents/NumberInput";
+import ColorInput from "./inputComponents/ColorInput";
 
 import { ChromePicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,24 +24,24 @@ const Buttons = ({ handleClick }) => {
   const [width, setWidth] = useState(+state.border.split(" ")[1]);
   const [paddingTB, setPaddingTB] = useState(+state.padding.split(" ")[0]);
   const [paddingLR, setPaddingLR] = useState(+state.padding.split(" ")[1]);
-  function handleComplete(color, type) {
+  function handleComplete({ hex }, type) {
     switch (type) {
-      case "bgc":
-        dispatch(changeBackgroundColor({ color }));
+      case "backgroundColor":
+        dispatch(changeBackgroundColor({ color: hex }));
         break;
-      case "font":
-        dispatch(changeColor({ color }));
+      case "color":
+        dispatch(changeColor({ color: hex }));
         break;
-      case "border":
-        dispatch(changeBorderColor({ color }));
+      case "borderColor":
+        dispatch(changeBorderColor({ color: hex }));
         break;
       default:
         break;
     }
   }
 
-  function handleChange(color, type) {
-    setState({ ...state, [type]: color });
+  function handleChange({ hex }, type) {
+    setState({ ...state, [type]: hex });
   }
 
   function inputChange(value, type) {
@@ -47,8 +49,8 @@ const Buttons = ({ handleClick }) => {
     let ptb;
     let plr;
     if (type.indexOf("padding") !== -1) {
-      ptb = document.querySelector('#paddingTB').value;
-      plr = document.querySelector('#paddingLR').value;
+      ptb = document.querySelector("#paddingTB").value;
+      plr = document.querySelector("#paddingLR").value;
     }
     if (type === "paddingTB") {
       setPaddingTB(value);
@@ -84,55 +86,37 @@ const Buttons = ({ handleClick }) => {
   return (
     <div>
       <GoBack handleClick={handleClick} />
-      <p>Background color</p>
-      <ChromePicker
-        color={state.backgroundColor}
-        onChangeComplete={({ hex }) => {
-          handleComplete(hex, "bgc");
-        }}
-        onChange={({ hex }) => {
-          handleChange(hex, "backgroundColor");
-        }}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Background color"}
+        value={state.backgroundColor}
+        handleChange={handleChange}
+        handleComplete={handleComplete}
+        type={"backgroundColor"}
       />
-      <p>Font color</p>
-      <ChromePicker
-        color={state.color}
-        onChangeComplete={({ hex }) => {
-          handleComplete(hex, "font");
-        }}
-        onChange={({ hex }) => {
-          handleChange(hex, "color");
-        }}
-        disableAlpha={true}
-        width={140}
+      <ColorInput
+        description={"Font color"}
+        value={state.color}
+        handleChange={handleChange}
+        handleComplete={handleComplete}
+        type={"color"}
       />
-      <p>Padding top/bottom</p>
-      <input
-        type="number"
-        id="paddingTB"
+      <NumberInput
+        description={"Padding top/bottom"}
+        ID={"paddingTB"}
         value={paddingTB}
-        min="0"
-        max="40"
-        onChange={(e) => inputChange(e.target.value, "paddingTB")}
+        inputChange={inputChange}
       />
-      <p>Padding left/right</p>
-      <input
-        type="number"
-        id="paddingLR"
+      <NumberInput
+        description={"Padding left/Right"}
+        ID={"paddingLR"}
         value={paddingLR}
-        min="0"
-        max="40"
-        onChange={(e) => inputChange(e.target.value, "paddingLR")}
+        inputChange={inputChange}
       />
-      <p>Round corners</p>
-      <input
-        type="number"
+      <NumberInput
+        description={"Round corners"}
+        ID={"borderRadius"}
         value={state.borderRadius}
-        min="0"
-        max="20"
-        onChange={(e) => inputChange(e.target.value, "borderRadius")}
+        inputChange={inputChange}
       />
       <p>Border</p>
       <button
@@ -155,17 +139,12 @@ const Buttons = ({ handleClick }) => {
             value={width}
             onChange={(e) => widthChange(e.target.value, "borderColor")}
           />
-          <p>Border color:</p>
-          <ChromePicker
-            color={state.borderColor}
-            onChangeComplete={({ hex }) => {
-              handleComplete(hex, "border");
-            }}
-            onChange={({ hex }) => {
-              handleChange(hex, "borderColor");
-            }}
-            disableAlpha={true}
-            width={140}
+          <ColorInput
+            description={"Border color"}
+            value={state.borderColor}
+            handleChange={handleChange}
+            handleComplete={handleComplete}
+            type={"borderColor"}
           />
         </div>
       )}

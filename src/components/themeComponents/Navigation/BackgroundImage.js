@@ -1,16 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
-import styled from "styled-components";
 
-import Sizes from "../inputComponents/Sizes";
+import ImageInput from "../inputComponents/ImageInput"
+import BgSize from "../inputComponents/BgSize"
 import {
   changeBackgroundImage,
   changeBackgroundSize,
 } from "../../../Redux/NavigationSlice";
-
-const BgLink = styled.input`
-  background-color: #f3f3f3;
-`;
 
 const BackgroundImage = () => {
   const dispatch = useDispatch();
@@ -50,33 +46,20 @@ const BackgroundImage = () => {
         break;
     }
   }
-  const sizes = ["Auto", "Cover", "Contain", "Percentage"];
   return (
     <div>
-      <p>Add background image</p>
-      <BgLink
-        id="navImg"
-        type="text"
-        placeholder="https://i.imgur.com/YfV0NmQ.jpg"
-      ></BgLink>
-      <button onClick={handleSave}>Save</button>
-      <p>Background size:</p>
-      <div className="sizes">
-        {sizes.map((size) => (
-          <Sizes key={size} name={size} handleSelect={handleSelect} />
-        ))}
-      </div>
-      {isPercentage && (
-        <div>
-          <input
-            onChange={(e) => handleSlide(e)}
-            type="range"
-            min="1"
-            max="100"
-            value={value}
-          ></input>
-        </div>
-      )}
+      <ImageInput
+        description={'Add background image'}
+        ID={"navImg"}
+        placeholder={"https://i.imgur.com/UddMv3X.png"}
+        handleSave={handleSave}
+      />
+      <BgSize
+        handleSelect={handleSelect}
+        isPercentage={isPercentage}
+        handleSlide={handleSlide}
+        value={value}
+      />
     </div>
   );
 };
