@@ -26,7 +26,6 @@ const ListITem = styled.li`
 `;
 
 const Childa = styled.a`
-  color: ${(props) => props.fontColor};
   :hover {
     text-decoration: none;
     background-color: ${(props) => props.backgroundColor};
@@ -82,7 +81,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="app-navbar-collapse">
           <ul className="nav navbar-nav" id="mnav">
             <ListITem
-              selBg={dropdown.selectedBackground}
+              selBg={dropdown.ddSel}
               id="playDD"
               onClick={() =>
                 document.getElementById("playDD").classList.toggle("open")
@@ -101,158 +100,72 @@ const Navbar = () => {
               </Link>
               <Ul
                 fontSize={dropdown.fontSize}
-                backgroundColor={dropdown.backgroundColor}
-                color={dropdown.fontColor}
+                backgroundColor={dropdown.ddBg}
+                color={dropdown.ddColor}
                 className="dropdown-menu"
                 role="menu"
               >
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     Live
                   </Childa>
                 </li>
                 <li className="dropdown-submenu">
                   <Childa
-                    backgroundColor={dropdown.hoverBackground}
+                    backgroundColor={dropdown.ddHover}
                     tabIndex="-1"
                     href="#"
                   >
                     Sprint
                   </Childa>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        20L
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        40L
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        100L
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        1000L
-                      </Childa>
-                    </li>
-                  </ul>
                 </li>
                 <li className="dropdown-submenu">
                   <Childa
-                    backgroundColor={dropdown.hoverBackground}
+                    backgroundColor={dropdown.ddHover}
                     tabIndex="-1"
                     href="cheeseRace"
                   >
                     Cheese race
                   </Childa>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        10L
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        18L
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        100L
-                      </Childa>
-                    </li>
-                  </ul>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     Map downstack
                   </Childa>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     Survival
                   </Childa>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     Ultra
                   </Childa>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     20TSD
                   </Childa>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     PC Mode
                   </Childa>
                 </li>
                 <li>
-                  <Childa backgroundColor={dropdown.hoverBackground} href="#">
+                  <Childa backgroundColor={dropdown.ddHover} href="#">
                     Practice
                   </Childa>
                 </li>
                 <li className="dropdown-submenu">
                   <Childa
-                    backgroundColor={dropdown.hoverBackground}
+                    backgroundColor={dropdown.ddHover}
                     tabIndex="-1"
                     href="#"
                   >
                     Rulesets
                   </Childa>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        Big mode
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        Pentomino
-                      </Childa>
-                    </li>
-                    <li>
-                      <Childa
-                        backgroundColor={dropdown.hoverBackground}
-                        href="#"
-                      >
-                        MPH
-                      </Childa>
-                    </li>
-                  </ul>
                 </li>
               </Ul>
             </ListITem>
@@ -316,8 +229,8 @@ const Navbar = () => {
                 Username
                 <Span
                   fontSize={notification.fontSize}
-                  backgroundColor={notification.backgroundColor}
-                  color={notification.fontColor}
+                  backgroundColor={notification.notifBg}
+                  color={notification.notifColor}
                   className="notification-count"
                 >
                   69

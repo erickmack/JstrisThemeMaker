@@ -10,16 +10,14 @@ const Navigation = ({ handleClick }) => {
       <NavPixels obj={false} type={"fontSize"} />
       <NavColors
         obj={false}
-        type={"bg"}
+        type={"backgroundColor"}
         toChange={"background"}
-        whichColor={"backgroundColor"}
       />
       <BackgroundImage/>
       <NavColors
         obj={false}
-        type={"font"}
+        type={"fontColor"}
         toChange={"font"}
-        whichColor={"fontColor"}
       />
       <hr />
       <span>NOTIFICATIONS</span>
@@ -28,13 +26,11 @@ const Navigation = ({ handleClick }) => {
         obj={"notification"}
         type={"notifColor"}
         toChange={"font"}
-        whichColor={"fontColor"}
       />
       <NavColors
         obj={"notification"}
         type={"notifBg"}
         toChange={"background"}
-        whichColor={"backgroundColor"}
       />
       <hr />
       <span>DROPDOWNS</span>
@@ -43,25 +39,21 @@ const Navigation = ({ handleClick }) => {
         obj={"dropdown"}
         type={"ddBg"}
         toChange={"background"}
-        whichColor={"backgroundColor"}
       />
       <NavColors
         obj={"dropdown"}
         type={"ddSel"}
         toChange={"selected"}
-        whichColor={"selectedBackground"}
       />
       <NavColors
         obj={"dropdown"}
         type={"ddColor"}
         toChange={"font"}
-        whichColor={"fontColor"}
       />
       <NavColors
         obj={"dropdown"}
         type={"ddHover"}
         toChange={"hover"}
-        whichColor={"hoverBackground"}
       />
     </div>
   );

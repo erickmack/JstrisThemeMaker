@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ChromePicker } from "react-color";
+import ColorInput from "../inputComponents/ColorInput";
 
 import {
   changeBackground,
@@ -13,7 +13,7 @@ import {
   changeDropdownHover,
   changeDropdownSel,
 } from "../../../Redux/NavigationSlice";
-const NavColors = ({ toChange, obj, whichColor, type }) => {
+const NavColors = ({ toChange, obj, type }) => {
   const dispatch = useDispatch();
   const { backgroundColor, fontColor, notification, dropdown } = useSelector(
     (state) => state.navigation
@@ -24,64 +24,58 @@ const NavColors = ({ toChange, obj, whichColor, type }) => {
     notification,
     dropdown,
   });
-  const handleComplete = (color, type, which) => {
+  const handleComplete = ({ hex }, type) => {
     switch (type) {
-      case "font":
-        dispatch(changeFontColor({ [which]: color }));
+      case "fontColor":
+        dispatch(changeFontColor({ [type]: hex }));
         break;
-      case "bg":
-        dispatch(changeBackground({ [which]: color }));
+      case "backgroundColor":
+        dispatch(changeBackground({ [type]: hex }));
         break;
       case "notifColor":
-        dispatch(changeNotifColor({ [which]: color }));
+        dispatch(changeNotifColor({ [type]: hex }));
         break;
       case "notifBg":
-        dispatch(changeNotifBg({ [which]: color }));
+        dispatch(changeNotifBg({ [type]: hex }));
         break;
       case "ddBg":
-        dispatch(changeDropdownBackground({ [which]: color }));
+        dispatch(changeDropdownBackground({ [type]: hex }));
         break;
       case "ddSel":
-        dispatch(changeDropdownSel({ backgroundColor: color }));
+        dispatch(changeDropdownSel({ [type]: hex }));
         break;
       case "ddColor":
-        dispatch(changeDropdownColor({ [which]: color }));
+        dispatch(changeDropdownColor({ [type]: hex }));
         break;
       case "ddHover":
-        dispatch(changeDropdownHover({ backgroundColor: color }));
+        dispatch(changeDropdownHover({ [type]: hex }));
         break;
       default:
         break;
     }
   };
-  const handleChange = (color, which, obj) => {
+  const handleChange = ({ hex }, type, obj) => {
     switch (obj) {
       case false:
-        setInput({ ...input, [which]: color });
+        setInput({ ...input, [type]: hex });
         break;
       default:
         setInput({
           ...input,
-          [obj]: { ...input[obj], [which]: color },
+          [obj]: { ...input[obj], [type]: hex },
         });
         break;
     }
   };
   return (
-    <div>
-      <div className="inputs">
-        <p>Change {toChange} color</p>
-        <ChromePicker
-          color={obj ? input[obj][whichColor] : input[whichColor]}
-          onChange={({ hex }) => handleChange(hex, whichColor, obj || false)}
-          onChangeComplete={({ hex }) => {
-            handleComplete(hex, type, whichColor);
-          }}
-          disableAlpha={true}
-          width={140}
-        />
-      </div>
-    </div>
+    <ColorInput
+      description={`Change ${toChange} color`}
+      handleChange={handleChange}
+      handleComplete={handleComplete}
+      type={type}
+      obj={obj || false}
+      value={obj ? input[obj][type] : input[type]}
+    />
   );
 };
 

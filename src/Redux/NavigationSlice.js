@@ -10,15 +10,15 @@ const navigationSlice = createSlice({
     fontColor: "#fff",
     notification: {
       fontSize: 12,
-      backgroundColor: "#ff4927",
-      fontColor: "#fff",
+      notifBg: "#ff4927",
+      notifColor: "#fff",
     },
     dropdown: {
-      selectedBackground: "#28415b",
-      backgroundColor: "#303030",
-      fontColor: "#fff",
+      ddSel: "#28415b",
+      ddBg: "#303030",
+      ddColor: "#fff",
       fontSize: 16,
-      hoverBackground: "#428bca",
+      ddHover: "#428bca",
     },
   },
   reducers: {
@@ -50,39 +50,39 @@ const navigationSlice = createSlice({
       ...state,
       notification: {
         ...state.notification,
-        backgroundColor: action.payload.backgroundColor,
+        notifBg: action.payload.notifBg,
       },
     }),
     changeNotifColor: (state, action) => ({
       ...state,
       notification: {
         ...state.notification,
-        fontColor: action.payload.fontColor,
+        notifColor: action.payload.notifColor,
       },
     }),
     changeDropdownSel: (state, action) => ({
       ...state,
       dropdown: {
         ...state.dropdown,
-        selectedBackground: action.payload.backgroundColor,
+        ddSel: action.payload.ddSel,
       },
     }),
     changeDropdownBackground: (state, action) => ({
       ...state,
       dropdown: {
         ...state.dropdown,
-        backgroundColor: action.payload.backgroundColor,
+        ddBg: action.payload.ddBg,
       },
     }),
     changeDropdownColor: (state, action) => ({
       ...state,
-      dropdown: { ...state.dropdown, fontColor: action.payload.fontColor },
+      dropdown: { ...state.dropdown, ddColor: action.payload.ddColor },
     }),
     changeDropdownHover: (state, action) => ({
       ...state,
       dropdown: {
         ...state.dropdown,
-        hoverBackground: action.payload.backgroundColor,
+        ddHover: action.payload.ddHover,
       },
     }),
     changeDropdownFont: (state, action) => ({
