@@ -3,6 +3,7 @@ import Navigation from "./Navigation/index";
 import Background from "./Background";
 import Board from './Board'
 import Buttons from './Buttons'
+import Stats from './Stats'
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -96,6 +97,14 @@ const SideBar = () => {
         unmountOnExit
       >
         <Buttons handleClick={handleClick} />
+      </CSSTransition>
+      <CSSTransition
+        in={activeMenu === "Stats"}
+        timeout={500}
+        classNames="menu-secondary"
+        unmountOnExit
+      >
+        <Stats handleClick={handleClick} />
       </CSSTransition>
     </Side>
   );
