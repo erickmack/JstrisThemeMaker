@@ -3,7 +3,7 @@ import Stats from './BstageComponents/Stats'
 
 const Bstage = () => {
     return (
-        <div style={{clear:'both'}}>
+        <div style={{clear:'both',position: 'relative'}}>
             <Buttons/>
             <Stats/>
         </div>
