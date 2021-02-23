@@ -14,17 +14,23 @@ import {
   changeIsVertical,
 } from "../../Redux/StatsSlice";
 
-const StatsOptions = ({ description, btns, selected }) => {
+const StatsOptions = ({ description, btns, selected, handleSelect, group }) => {
   return (
     <>
       <p>{description}</p>
       <button
-        className={`statsOption ${btns[0]}Option ${selected === btns[0] ? "selected" : ""}`}
+        className={`${group} ${selected === btns[0] ? "selected" : ""}`}
+        id={`${btns[0]}Option`}
+        onClick={(e) => handleSelect(e.target.id, group)}
       >
         {btns[0]}
       </button>
       <button
-        className={`statsOption ${btns[1]}Option ${selected === btns[1] ? "selected" : ""}`}
+        className={`${group} ${btns[1]}Option ${
+          selected === btns[1] ? "selected" : ""
+        }`}
+        id={`${btns[1]}Option`}
+        onClick={(e) => handleSelect(e.target.id, group)}
       >
         {btns[1]}
       </button>
@@ -84,6 +90,30 @@ const Stats = ({ handleClick }) => {
         break;
     }
   }
+  function handleSelect(target, group) {
+    document.querySelector(`.${group}.selected`).classList.remove("selected");
+    document.querySelector(`#${target}`).classList.add("selected");
+    switch (target) {
+      case "LeftOption":
+        setState({ ...state, isLeft: true });
+        dispatch(changeIsLeft({ isLeft: true }));
+        break;
+      case "UnderOption":
+        setState({ ...state, isLeft: false });
+        dispatch(changeIsLeft({ isLeft: false }));
+        break;
+      case "VerticalOption":
+        setState({ ...state, isVertical: true });
+        dispatch(changeIsVertical({ isVertical: true }));
+        break;
+      case "HorizontalOption":
+        setState({ ...state, isVertical: false });
+        dispatch(changeIsVertical({ isVertical: false }));
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <div>
       <GoBack handleClick={handleClick} />
@@ -113,15 +143,19 @@ const Stats = ({ handleClick }) => {
         type={"numbersColor"}
         value={hsl}
       />
-      <StatsOptions 
-       description={'Stats position'}
-       btns={['Left','Under']}
-       selected={'Under'}
+      <StatsOptions
+        description={"Stats position"}
+        btns={["Left", "Under"]}
+        selected={"Under"}
+        group={"position"}
+        handleSelect={handleSelect}
       />
-      <StatsOptions 
-       description={'Stats alignment'}
-       btns={['Vertical','Horizontal']}
-       selected={'Horizontal'}
+      <StatsOptions
+        description={"Stats alignment"}
+        btns={["Vertical", "Horizontal"]}
+        selected={"Horizontal"}
+        group={"alignmen"}
+        handleSelect={handleSelect}
       />
     </div>
   );

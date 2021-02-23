@@ -7,8 +7,8 @@ const statsSlice = createSlice({
         wordsColor: '#fff',
         numbersSize: 15,
         numbersColor: [0,0,100],
-        isLeft: true,
-        isVertical: true
+        isLeft: false,
+        isVertical: false
     },
     reducers: {
         changeWordsSize: (state,action)=>({
