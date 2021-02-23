@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: #4e5e;
   }
 
+  .statsOptions.selected{
+    background-color: #4e5e;
+  }
+
   .menu-primary-enter {
     transform: translateX(-110%);
   }
