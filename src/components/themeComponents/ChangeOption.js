@@ -15,9 +15,10 @@ const Button = styled.button`
   }
 `;
 
-const ChangeOption = ({ name, handleClick }) => {
+const ChangeOption = ({ name, handleClick, id }) => {
   return (
     <Button
+      id={id}
       onClick={() => {
         handleClick(name);
         if (name === "Navigation") {

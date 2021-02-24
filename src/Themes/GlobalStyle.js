@@ -13,6 +13,14 @@ const GlobalStyle = createGlobalStyle`
     display: block;
   }
 
+  .fri{
+    background-image: url('https://s.jezevec10.com/res/chat/chat6.png')
+  }
+
+  .exUp {
+    background-image: url('https://s.jezevec10.com/res/svg/up.svg')
+  }
+
   .selected{
     background-color: #4e5e;
   }

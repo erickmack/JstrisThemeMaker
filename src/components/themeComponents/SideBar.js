@@ -1,9 +1,10 @@
 import ChangeOption from "./ChangeOption";
 import Navigation from "./Navigation/index";
 import Background from "./Background";
-import Board from './Board'
-import Buttons from './Buttons'
-import Stats from './Stats'
+import Board from "./Board";
+import Buttons from "./Buttons";
+import Stats from "./Stats";
+import Chat from "./Chat";
 
 import { useState } from "react";
 import styled from "styled-components";
@@ -43,8 +44,8 @@ const componentsToChange = [
   "Board",
   "Buttons",
   "Stats",
-  "Enemy Board",
   "Chat",
+  "Generate",
 ];
 
 const SideBar = () => {
@@ -62,7 +63,12 @@ const SideBar = () => {
       >
         <SideMenu>
           {componentsToChange.map((name) => (
-            <ChangeOption name={name} key={name} handleClick={handleClick} />
+            <ChangeOption
+              id={`${name}Btn`}
+              name={name}
+              key={name}
+              handleClick={handleClick}
+            />
           ))}
         </SideMenu>
       </CSSTransition>
@@ -105,6 +111,14 @@ const SideBar = () => {
         unmountOnExit
       >
         <Stats handleClick={handleClick} />
+      </CSSTransition>
+      <CSSTransition
+        in={activeMenu === "Chat"}
+        timeout={500}
+        classNames="menu-secondary"
+        unmountOnExit
+      >
+        <Chat handleClick={handleClick} />
       </CSSTransition>
     </Side>
   );

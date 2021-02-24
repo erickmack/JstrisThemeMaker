@@ -2,7 +2,6 @@ import GoBack from "./GoBack";
 import NumberInput from "./inputComponents/NumberInput";
 import ColorInput from "./inputComponents/ColorInput";
 
-import { ChromePicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
