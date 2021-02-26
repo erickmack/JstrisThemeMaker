@@ -74,9 +74,9 @@ const Navbar = () => {
     >
       <div className="container">
         <div className="navbar-header">
-          <Link color={fontColor} className="navbar-brand" href="#">
+          <a style={{color: 'white'}} className="navbar-brand" href="#">
             Jstris
-          </Link>
+          </a>
         </div>
         <div className="collapse navbar-collapse" id="app-navbar-collapse">
           <ul className="nav navbar-nav" id="mnav">

@@ -95,10 +95,10 @@ const DrawBlocks = (skin,ghost) => {
 
   function ghostT() {
     // Draw Ghost T
-    DrawBlock(gamectx, 1, 12, 8, true, tex);
-    DrawBlock(gamectx, 2, 11, 8, true, tex);
-    DrawBlock(gamectx, 2, 12, 8, true, tex);
-    DrawBlock(gamectx, 2, 13, 8, true, tex);
+    DrawBlock(gamectx, 1, 12, 6, true, ghostTex);
+    DrawBlock(gamectx, 2, 11, 6, true, ghostTex);
+    DrawBlock(gamectx, 2, 12, 6, true, ghostTex);
+    DrawBlock(gamectx, 2, 13, 6, true, ghostTex);
   };
 
   // function drawRectangle(blockX, blockY, sizeX, sizeY, color) {

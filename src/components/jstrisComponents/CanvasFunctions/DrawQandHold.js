@@ -7,15 +7,16 @@ function DrawQandHold(skin) {
   const queuecanvas = document.getElementById("queueCanvas");
   const qctx = queuecanvas.getContext("2d");
 
+  qctx.clearRect(0, 0, queuecanvas.width, queuecanvas.height);
+
   var tex = new Image();
   tex.onload = function () {
     drawPiece(hctx, "S", 0);
-
     drawPiece(qctx, "O", 0);
-    drawPiece(qctx, "Z", 3);
-    drawPiece(qctx, "O", 6);
-    drawPiece(qctx, "T", 9);
-    drawPiece(qctx, "J", 12);
+    drawPiece(qctx, "O", 3);
+    drawPiece(qctx, "I", 6);
+    drawPiece(qctx, "Z", 9);
+    drawPiece(qctx, "Z", 12);
   };
   tex.src = skin;
 

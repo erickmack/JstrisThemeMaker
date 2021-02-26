@@ -44,7 +44,7 @@ const Main = () => {
     <>
       <NavBar />
       <Container>
-        <Jstris
+        <Jstris id="app"
           backgroundColor={backgroundColor}
           backgroundImage={backgroundImage}
           backgroundSize={backgroundSize}
