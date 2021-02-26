@@ -1,6 +1,7 @@
 import GoBack from "./GoBack";
 import NumberInput from "./inputComponents/NumberInput";
 import ColorInput from "./inputComponents/ColorInput";
+import ImageInput from "./inputComponents/ImageInput"
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -61,20 +62,19 @@ const Board = ({ handleClick }) => {
   return (
     <div>
       <GoBack handleClick={handleClick} />
-      <p>Block skin</p>
-      <input
-        id="skinLink"
-        type="text"
-        placeholder="https://s.jezevec10.com/res/b/20/51.png"
-      ></input>
-      <button onClick={(e) => handleSave("skin", "skinLink")}>Save</button>
-      <p>Ghost skin</p>
-      <input
-        id="ghostLink"
-        type="text"
-        placeholder="https://s.jezevec10.com/res/b/20/51.png"
-      ></input>
-      <button onClick={(e) => handleSave("ghost", "ghostLink")}>Save</button>
+      <ImageInput
+        description={'Block skin'}
+        ID={'skinLink'}
+        type={'skin'}
+        placeholder={'https://i.imgur.com/6EqjUdN.png'}
+        handleSave={handleSave}
+      />
+      <ImageInput
+        description={'Ghost skin'}
+        ID={'ghostLink'}
+        placeholder={'https://i.imgur.com/OvH7LA4.png'}
+        handleSave={handleSave}
+      />
       <ColorInput
         description={"Attack line color"}
         handleChange={handleChange}
