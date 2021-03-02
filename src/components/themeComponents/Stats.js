@@ -150,13 +150,15 @@ const Stats = ({ handleClick }) => {
         group={"position"}
         handleSelect={handleSelect}
       />
-      <StatsOptions
-        description={"Stats alignment"}
-        btns={["Vertical", "Horizontal"]}
-        selected={"Horizontal"}
-        group={"alignmen"}
-        handleSelect={handleSelect}
-      />
+      {state.isLeft && (
+        <StatsOptions
+          description={"Stats alignment"}
+          btns={["Vertical", "Horizontal"]}
+          selected={"Horizontal"}
+          group={"alignmen"}
+          handleSelect={handleSelect}
+        />
+      )}
     </div>
   );
 };

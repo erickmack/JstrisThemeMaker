@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const boardSlice = createSlice({
   name: "board",
   initialState: {
-    skin: "https://i.imgur.com/6EqjUdN.png",
+    skin: "https://i.imgur.com/LsFmv54.png",
     ghostSkin: "https://i.imgur.com/OvH7LA4.png",
     attackColor: "#ff0000",
     numberColor: "#999",

@@ -66,7 +66,7 @@ const Board = ({ handleClick }) => {
         description={'Block skin'}
         ID={'skinLink'}
         type={'skin'}
-        placeholder={'https://i.imgur.com/6EqjUdN.png'}
+        placeholder={'https://i.imgur.com/LsFmv54.png'}
         handleSave={handleSave}
       />
       <ImageInput
