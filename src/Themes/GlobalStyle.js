@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   input[type=number]{
     width: 30%;
-    background-color: #f2f2f2;
+    background-color: #f3f3f3;
     display: block;
   }
 
